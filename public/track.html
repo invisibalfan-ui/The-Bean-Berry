@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Track Order</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Track Your Order</h1>
+
+  <div class="glass" style="max-width:300px;">
+    <input id="trackId" placeholder="Order #">
+    <button onclick="track()">Track</button>
+  </div>
+
+  <div id="trackResult" class="glass" style="display:none;"></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bean Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Kitchen Display</h1>
+
+  <div id="workflow" class="workflow">
+    <div class="column" data-status="New">
+      <h2>New</h2>
+      <div class="order-list" id="col-New"></div>
+    </div>
+
+    <div class="column" data-status="Preparing">
+      <h2>Preparing</h2>
+      <div class="order-list" id="col-Preparing"></div>
+    </div>
+
+    <div class="column" data-status="Ready">
+      <h2>Ready</h2>
+      <div class="order-list" id="col-Ready"></div>
+    </div>
+
+    <div class="column" data-status="Completed">
+      <h2>Completed</h2>
+      <div class="order-list" id="col-Completed"></div>
+    </div>
+  </div>
+
+  <audio id="newOrderSound" src="sounds/new-order.mp3"></audio>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

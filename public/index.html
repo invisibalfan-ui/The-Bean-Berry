@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order Snacks</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Snack Stall Menu</h1>
+
+  <div id="menu"></div>
+
+  <div class="glass" style="max-width:300px;">
+    <label>Priority</label>
+    <select id="prioritySelect">
+      <option>Normal</option>
+      <option>High</option>
+      <option>Urgent</option>
+    </select>
+  </div>
+
+  <div class="glass" style="max-width:300px;">
+    <label>Notes</label>
+    <textarea id="orderNotes"></textarea>
+  </div>
+
+  <button id="placeOrder">Place Order</button>
+
+  <div class="glass" style="margin-top:20px;">
+    <h3>Your Order QR</h3>
+    <div id="qrcode"></div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

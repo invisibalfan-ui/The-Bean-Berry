@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Manage Items</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Item Management</h1>
+
+  <div class="glass" style="max-width:400px;">
+    <h3>Add Item</h3>
+    <input id="itemName" placeholder="Name"><br><br>
+    <input id="itemPrice" placeholder="Price" type="number"><br><br>
+    <input id="itemStock" placeholder="Stock" type="number"><br><br>
+    <input id="itemCategory" placeholder="Category"><br><br>
+    <input id="itemImage" placeholder="Image URL"><br><br>
+    <button onclick="addItem()">Add Item</button>
+  </div>
+
+  <h2>Existing Items</h2>
+  <div id="itemList"></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
