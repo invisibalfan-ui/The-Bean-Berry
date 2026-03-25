@@ -1,20 +1,72 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Track Order</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1>Track Your Order</h1>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Snack Stall · Track Order</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="background-orbit orbit-1"></div>
+    <div class="background-orbit orbit-2"></div>
+    <div class="background-orbit orbit-3"></div>
 
-  <div class="glass" style="max-width:300px;">
-    <input id="trackId" placeholder="Order #">
-    <button onclick="track()">Track</button>
-  </div>
+    <div class="page-shell">
+      <header class="top-nav">
+        <div class="nav-left">
+          <div class="logo-mark">SB</div>
+          <div class="nav-title">
+            <div class="nav-name">Track order</div>
+            <div class="nav-subtitle">Live status & QR</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html">Orders</a>
+          <a href="bean.html">Kitchen</a>
+        </nav>
+      </header>
 
-  <div id="trackResult" class="glass" style="display:none;"></div>
+      <main class="main-layout">
+        <div class="page-header">
+          <div class="page-title-block">
+            <h1>Check your order status</h1>
+            <p>Enter your order number or scan your QR code.</p>
+          </div>
+        </div>
 
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="script.js"></script>
-</body>
+        <div class="grid-2">
+          <section class="card">
+            <div class="card-header">
+              <div class="card-title">Find your order</div>
+            </div>
+            <div class="form-grid">
+              <div class="form-row">
+                <label class="label" for="track-id">Order number</label>
+                <input id="track-id" class="input" placeholder="e.g. 42" />
+              </div>
+            </div>
+            <div style="margin-top:14px;display:flex;gap:8px;">
+              <button id="track-btn" class="btn btn-primary">Track order</button>
+              <button id="track-clear" class="btn btn-ghost">Clear</button>
+            </div>
+            <p id="track-error" style="margin-top:10px;font-size:12px;color:var(--danger);display:none;">
+              Order not found. Check the number and try again.
+            </p>
+          </section>
+
+          <section class="card">
+            <div class="card-header">
+              <div class="card-title">Status</div>
+              <span id="track-status-pill" class="status-pill new" style="display:none;"></span>
+            </div>
+            <div id="track-details" style="font-size:13px;color:var(--text-muted);">
+              Enter an order number to see details here.
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="track.js"></script>
+    </div>
+  </body>
 </html>

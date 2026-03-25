@@ -1,18 +1,62 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Login</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1>Staff Login</h1>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Snack Stall · Staff Login</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="background-orbit orbit-1"></div>
+    <div class="background-orbit orbit-2"></div>
+    <div class="background-orbit orbit-3"></div>
 
-  <div class="glass" style="max-width:300px;">
-    <input id="user" placeholder="Username"><br><br>
-    <input id="pass" type="password" placeholder="Password"><br><br>
-    <button onclick="login()">Login</button>
-  </div>
+    <div class="page-shell">
+      <header class="top-nav">
+        <div class="nav-left">
+          <div class="logo-mark">SB</div>
+          <div class="nav-title">
+            <div class="nav-name">Staff access</div>
+            <div class="nav-subtitle">Kitchen & management tools</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html">Orders</a>
+          <a href="bean.html">Kitchen</a>
+        </nav>
+      </header>
 
-  <script src="script.js"></script>
-</body>
+      <main class="main-layout" style="display:flex;justify-content:center;align-items:center;min-height:70vh;">
+        <section class="card" style="max-width:420px;width:100%;">
+          <div class="card-header">
+            <div class="card-title">Sign in</div>
+            <span class="badge">Staff only</span>
+          </div>
+          <p style="font-size:13px;color:var(--text-muted);margin:0 0 14px;">
+            Authenticate to access the kitchen dashboard and item manager.
+          </p>
+
+          <div class="form-grid">
+            <div class="form-row">
+              <label class="label" for="login-user">Username</label>
+              <input id="login-user" class="input" autocomplete="username" />
+            </div>
+            <div class="form-row">
+              <label class="label" for="login-pass">Password</label>
+              <input id="login-pass" class="input" type="password" autocomplete="current-password" />
+            </div>
+          </div>
+
+          <div style="margin-top:16px;display:flex;justify-content:flex-end;gap:8px;">
+            <button id="login-btn" class="btn btn-primary">Continue</button>
+          </div>
+
+          <p id="login-error" style="margin-top:10px;font-size:12px;color:var(--danger);display:none;">
+            Invalid credentials. Please try again.
+          </p>
+        </section>
+      </main>
+
+      <script src="login.js"></script>
+    </div>
+  </body>
 </html>

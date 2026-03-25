@@ -1,37 +1,52 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Bean Dashboard</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1>Kitchen Display</h1>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Snack Stall · Kitchen</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="background-orbit orbit-1"></div>
+    <div class="background-orbit orbit-2"></div>
+    <div class="background-orbit orbit-3"></div>
 
-  <div id="workflow" class="workflow">
-    <div class="column" data-status="New">
-      <h2>New</h2>
-      <div class="order-list" id="col-New"></div>
+    <div class="page-shell">
+      <header class="top-nav">
+        <div class="nav-left">
+          <div class="logo-mark">SB</div>
+          <div class="nav-title">
+            <div class="nav-name">Kitchen Display</div>
+            <div class="nav-subtitle">Live orders · Beep.dev</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html">Orders</a>
+          <a href="items.html">Items</a>
+          <a href="track.html">Track</a>
+        </nav>
+      </header>
+
+      <main class="main-layout">
+        <div class="page-header">
+          <div class="page-title-block">
+            <h1>Live order board</h1>
+            <p>Drag orders through stages or tap actions to update.</p>
+          </div>
+          <div class="pill">
+            <span class="dot" style="width:8px;height:8px;border-radius:999px;background:var(--accent-strong);box-shadow:0 0 10px rgba(59,130,246,0.8);"></span>
+            Real-time via WebSocket
+          </div>
+        </div>
+
+        <section class="card">
+          <div class="kds-columns" id="kds-columns">
+            <!-- JS will render columns: New, Preparing, Ready, Completed -->
+          </div>
+        </section>
+      </main>
+
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="bean.js"></script>
     </div>
-
-    <div class="column" data-status="Preparing">
-      <h2>Preparing</h2>
-      <div class="order-list" id="col-Preparing"></div>
-    </div>
-
-    <div class="column" data-status="Ready">
-      <h2>Ready</h2>
-      <div class="order-list" id="col-Ready"></div>
-    </div>
-
-    <div class="column" data-status="Completed">
-      <h2>Completed</h2>
-      <div class="order-list" id="col-Completed"></div>
-    </div>
-  </div>
-
-  <audio id="newOrderSound" src="sounds/new-order.mp3"></audio>
-
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="script.js"></script>
-</body>
+  </body>
 </html>

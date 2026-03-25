@@ -1,26 +1,90 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Manage Items</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1>Item Management</h1>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Snack Stall · Items</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="background-orbit orbit-1"></div>
+    <div class="background-orbit orbit-2"></div>
+    <div class="background-orbit orbit-3"></div>
 
-  <div class="glass" style="max-width:400px;">
-    <h3>Add Item</h3>
-    <input id="itemName" placeholder="Name"><br><br>
-    <input id="itemPrice" placeholder="Price" type="number"><br><br>
-    <input id="itemStock" placeholder="Stock" type="number"><br><br>
-    <input id="itemCategory" placeholder="Category"><br><br>
-    <input id="itemImage" placeholder="Image URL"><br><br>
-    <button onclick="addItem()">Add Item</button>
-  </div>
+    <div class="page-shell">
+      <header class="top-nav">
+        <div class="nav-left">
+          <div class="logo-mark">SB</div>
+          <div class="nav-title">
+            <div class="nav-name">Item manager</div>
+            <div class="nav-subtitle">Menu, stock & visibility</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html">Orders</a>
+          <a href="bean.html">Kitchen</a>
+          <a href="track.html">Track</a>
+        </nav>
+      </header>
 
-  <h2>Existing Items</h2>
-  <div id="itemList"></div>
+      <main class="main-layout">
+        <div class="page-header">
+          <div class="page-title-block">
+            <h1>Menu & inventory</h1>
+            <p>Control what’s available, pricing, and stock levels.</p>
+          </div>
+          <button id="add-item-btn" class="btn btn-primary">Add item</button>
+        </div>
 
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="script.js"></script>
-</body>
+        <section class="card">
+          <table class="table" id="items-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Flags</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- JS renders items -->
+            </tbody>
+          </table>
+        </section>
+
+        <section class="card" style="margin-top:18px;">
+          <div class="card-header">
+            <div class="card-title">Edit item</div>
+            <span class="badge">Select an item to edit</span>
+          </div>
+          <div class="form-grid">
+            <div class="form-row">
+              <label class="label" for="item-name">Name</label>
+              <input id="item-name" class="input" />
+            </div>
+            <div class="form-row">
+              <label class="label" for="item-category">Category</label>
+              <input id="item-category" class="input" />
+            </div>
+            <div class="form-row">
+              <label class="label" for="item-price">Price</label>
+              <input id="item-price" class="input" type="number" step="0.01" />
+            </div>
+            <div class="form-row">
+              <label class="label" for="item-stock">Stock</label>
+              <input id="item-stock" class="input" type="number" />
+            </div>
+          </div>
+          <div style="margin-top:14px;display:flex;gap:8px;justify-content:flex-end;">
+            <button id="delete-item" class="btn btn-ghost">Delete</button>
+            <button id="save-item" class="btn btn-primary">Save changes</button>
+          </div>
+        </section>
+      </main>
+
+      <script src="/socket.io/socket.io.js"></script>
+      <script src="items.js"></script>
+    </div>
+  </body>
 </html>

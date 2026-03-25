@@ -1,17 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Status Widget</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div id="widgetBar" class="glass">
-    <span id="wQueue">Queue: 0</span>
-    <span id="wPreparing">Preparing: 0</span>
-    <span id="wReady">Ready: 0</span>
-  </div>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Snack Stall · Status Widget</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body style="background:transparent;">
+    <div class="card" style="max-width:320px;">
+      <div class="card-header">
+        <div class="card-title">Stall status</div>
+        <span class="badge" id="widget-status-pill">Checking…</span>
+      </div>
+      <div style="font-size:13px;color:var(--text-muted);" id="widget-body">
+        Live status and queue length will appear here.
+      </div>
+    </div>
 
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="script.js"></script>
-</body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="widget.js"></script>
+  </body>
 </html>
