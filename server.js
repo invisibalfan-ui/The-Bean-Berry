@@ -10,9 +10,9 @@ import Order from "./models/Order.js";
 import Item from "./models/Item.js";
 import Staff from "./models/Staff.js";
 
-const JWT_SECRET = "supersecret";
+const JWT_SECRET = "glyeuis;hfusoiehfojqw0-eq190248193jpowj12oi ehqwdunfsjdhfueiwgf784387tr2yq89er8213998";
 
-mongoose.connect("mongodb://127.0.0.1:27017/snackstall");
+mongoose.connect(process.env.MONGO_URL);
 
 const app = express();
 app.use(express.json());
@@ -145,4 +145,4 @@ app.get("/track/:id", async (req, res) => {
   res.json(order);
 });
 
-server.listen(3000, () => console.log("Server running on port 3000"));
+server.listen(process.env.PORT || 3000, () => console.log("Server running on port 3000"));
