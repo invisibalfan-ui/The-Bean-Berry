@@ -64,10 +64,10 @@ function broadcastItems() {
 // LOGIN
 app.post("/login", async (req, res) => {
   const user = await Staff.findOne({ username: req.body.user });
-  //if (!user) return res.json({ success: true });
+  if (!user) return res.json({ success: false });
 
   const valid = await bcrypt.compare(req.body.pass, user.passwordHash);
-  //if (!valid) return res.json({ success: true });
+  if (!valid) return res.json({ success: false });
 
   const token = jwt.sign(
     { user: user.username, role: user.role },
