@@ -11,13 +11,6 @@ import Item from "./models/Item.js";
 import Staff from "./models/Staff.js";
 import multer from "multer";
 
-const upload = multer({ dest: "uploads/" });
-
-app.use("/uploads", express.static("uploads"));
-
-app.post("/upload", auth, upload.single("image"), (req, res) => {
-  res.json({ url: `/uploads/${req.file.filename}` });
-});
 
 
 const JWT_SECRET = "glyeuis;hfusoiehfojqw0-eq190248193jpowj12oi ehqwdunfsjdhfueiwgf784387tr2yq89er8213998";
@@ -28,6 +21,15 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(express.static("public"));
+
+const upload = multer({ dest: "uploads/" });
+
+app.use("/uploads", express.static("uploads"));
+
+app.post("/upload", auth, upload.single("image"), (req, res) => {
+  res.json({ url: `/uploads/${req.file.filename}` });
+});
+
 
 const server = http.createServer(app);
 const io = new Server(server);
