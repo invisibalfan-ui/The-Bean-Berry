@@ -859,3 +859,99 @@ img {
     height: 28px;
   }
 }
+
+/* ================================
+   TRUE MOBILE-FIRST LAYOUT FIX
+   ================================ */
+
+@media (max-width: 600px) {
+
+  /* Remove desktop sidebar spacing */
+  .sidebar {
+    display: none !important;
+  }
+
+  .page-shell,
+  .main-layout {
+    margin-left: 0 !important;
+    padding: 12px !important;
+  }
+
+  /* Hide desktop top nav */
+  .top-nav {
+    display: none !important;
+  }
+
+  /* Enable bottom nav */
+  .mobile-nav {
+    display: flex !important;
+  }
+
+  /* Make cards compact */
+  .card {
+    padding: 12px !important;
+    border-radius: 14px !important;
+  }
+
+  /* Reduce font sizes */
+  body {
+    font-size: 14px !important;
+  }
+
+  h1 {
+    font-size: 18px !important;
+  }
+
+  .card-title {
+    font-size: 13px !important;
+  }
+
+  /* Fix grid layout */
+  .grid-2 {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Fix input spacing */
+  .input,
+  .select,
+  .textarea {
+    padding: 10px !important;
+    font-size: 14px !important;
+  }
+
+  /* Fix buttons */
+  .btn {
+    width: 100% !important;
+    padding: 10px !important;
+    font-size: 14px !important;
+  }
+
+  /* Fix table overflow */
+  table.table {
+    display: block !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+  }
+
+  /* Fix status section */
+  #track-details {
+    font-size: 14px !important;
+  }
+
+  /* Fix header spacing */
+  .page-header {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* Fix card header */
+  .card-header {
+    margin-bottom: 8px !important;
+  }
+
+  /* Fix spacing around sections */
+  section.card {
+    margin-bottom: 12px !important;
+  }
+}
