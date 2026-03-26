@@ -39,7 +39,7 @@
           <table class="table" id="items-table">
             <thead>
               <tr>
-                <th>Name</th>
+                <th>Item</th>
                 <th>Category</th>
                 <th>Price</th>
                 <th>Stock</th>
@@ -47,16 +47,14 @@
                 <th></th>
               </tr>
             </thead>
-            <tbody>
-              <!-- JS renders items -->
-            </tbody>
+            <tbody></tbody>
           </table>
         </section>
 
         <section class="card" style="margin-top:18px;">
           <div class="card-header">
             <div class="card-title">Edit item</div>
-            <span class="badge">Select an item to edit</span>
+            <span class="badge">Select an item or add new</span>
           </div>
           <div class="form-grid">
             <div class="form-row">
@@ -75,8 +73,13 @@
               <label class="label" for="item-stock">Stock</label>
               <input id="item-stock" class="input" type="number" />
             </div>
+            <div class="form-row">
+              <label class="label">Image</label>
+              <input type="file" id="item-image" class="input" accept="image/*" />
+              <img id="item-image-preview" class="item-image-preview" style="display:none;" />
+            </div>
           </div>
-          <div style="margin-top:14px;display:flex;gap:8px;justify-content:flex-end;">
+          <div style="margin-top:14px;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;">
             <button id="delete-item" class="btn btn-ghost">Delete</button>
             <button id="save-item" class="btn btn-primary">Save changes</button>
           </div>

@@ -35,7 +35,16 @@ function render(order) {
   document.getElementById("track-details").innerHTML = `
     <div>Order #${order.id}</div>
     <div style="margin-top:6px;">
-      ${order.items.map(i => `${i.qty}× ${i.name}`).join("<br>")}
+      ${order.items
+        .map(
+          i => `
+        <div style="display:flex;align-items:center;gap:6px;">
+          ${i.image ? `<img src="${i.image}" class="item-thumb">` : ""}
+          ${i.qty}× ${i.name}
+        </div>
+      `
+        )
+        .join("")}
     </div>
     <div style="margin-top:10px;color:var(--text-soft);font-size:12px;">
       Priority: ${order.priority}<br>

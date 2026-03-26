@@ -1,11 +1,11 @@
 document.getElementById("login-btn").onclick = async () => {
-  const user = document.getElementById("login-user").value.trim();
-  const pass = document.getElementById("login-pass").value.trim();
+  const username = document.getElementById("login-user").value.trim();
+  const password = document.getElementById("login-pass").value.trim();
 
   const res = await fetch("/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ user, pass })
+    body: JSON.stringify({ username, password })
   });
 
   const data = await res.json();

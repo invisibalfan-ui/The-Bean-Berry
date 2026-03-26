@@ -40,7 +40,16 @@ function renderOrder(order) {
     </div>
 
     <div class="order-items">
-      ${order.items.map(i => `${i.qty}× ${i.name || ""}`).join("<br>")}
+      ${order.items
+        .map(
+          i => `
+        <div style="display:flex;align-items:center;gap:6px;">
+          ${i.image ? `<img src="${i.image}" class="item-thumb">` : ""}
+          ${i.qty}× ${i.name || ""}
+        </div>
+      `
+        )
+        .join("")}
     </div>
 
     <div class="order-actions">

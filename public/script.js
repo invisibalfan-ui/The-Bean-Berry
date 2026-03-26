@@ -20,6 +20,7 @@ function renderMenu() {
     div.className = "menu-item";
 
     div.innerHTML = `
+      ${item.image ? `<img src="${item.image}" class="menu-img">` : ""}
       <div class="menu-item-name">${item.name}</div>
       <div class="menu-item-meta">
         <span>$${item.price.toFixed(2)}</span>
@@ -38,7 +39,13 @@ function addToCart(item) {
   if (existing) {
     existing.qty++;
   } else {
-    cart.push({ id: item._id, name: item.name, price: item.price, qty: 1 });
+    cart.push({
+      id: item._id,
+      name: item.name,
+      price: item.price,
+      image: item.image,
+      qty: 1
+    });
   }
 
   renderCart();

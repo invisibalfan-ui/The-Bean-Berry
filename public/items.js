@@ -19,16 +19,15 @@ function renderItems(items) {
     const tr = document.createElement("tr");
 
     tr.innerHTML = `
-      <td>${item.name}</td>
+      <td>
+        ${item.image ? `<img src="${item.image}" class="item-thumb">` : ""}
+        ${item.name}
+      </td>
       <td>${item.category || "-"}</td>
       <td>$${item.price.toFixed(2)}</td>
       <td>${item.stock === -1 ? "∞" : item.stock}</td>
-      <td>
-        ${item.soldOut ? `<span class="tag">Sold Out</span>` : ""}
-      </td>
-      <td>
-        <button class="btn btn-ghost" data-id="${item._id}">Edit</button>
-      </td>
+      <td>${item.soldOut ? `<span class="tag">Sold Out</span>` : ""}</td>
+      <td><button class="btn btn-ghost" data-id="${item._id}">Edit</button></td>
     `;
 
     tr.querySelector("button").onclick = () => selectItem(item);
@@ -43,6 +42,12 @@ function selectItem(item) {
   document.getElementById("item-category").value = item.category || "";
   document.getElementById("item-price").value = item.price;
   document.getElementById("item-stock").value = item.stock;
+
+  const preview = document.getElementById("item-image-preview");
+  preview.src = item.image || "";
+  preview.style.display = item.image ? "block" : "none";
+
+  document.getElementById("item-image").value = "";
 }
 
 document.getElementById("add-item-btn").onclick = () => {
@@ -52,7 +57,35 @@ document.getElementById("add-item-btn").onclick = () => {
   document.getElementById("item-category").value = "";
   document.getElementById("item-price").value = "";
   document.getElementById("item-stock").value = "";
+  document.getElementById("item-image").value = "";
+
+  const preview = document.getElementById("item-image-preview");
+  preview.src = "";
+  preview.style.display = "none";
 };
+
+document.getElementById("item-image").onchange = e => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const preview = document.getElementById("item-image-preview");
+  preview.src = URL.createObjectURL(file);
+  preview.style.display = "block";
+};
+
+async function uploadImage(file) {
+  const form = new FormData();
+  form.append("image", file);
+
+  const res = await fetch("/upload", {
+    method: "POST",
+    headers: { "Authorization": token },
+    body: form
+  });
+
+  const data = await res.json();
+  return data.url;
+}
 
 document.getElementById("save-item").onclick = async () => {
   const body = {
@@ -61,6 +94,13 @@ document.getElementById("save-item").onclick = async () => {
     price: Number(document.getElementById("item-price").value),
     stock: Number(document.getElementById("item-stock").value)
   };
+
+  const file = document.getElementById("item-image").files[0];
+  if (file) {
+    body.image = await uploadImage(file);
+  } else if (selectedItem) {
+    body.image = selectedItem.image;
+  }
 
   if (selectedItem) {
     await fetch(`/items/${selectedItem._id}`, {
