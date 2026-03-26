@@ -50,7 +50,10 @@ function selectItem(item) {
   document.getElementById("item-image").value = "";
 }
 
-document.getElementById("add-item-btn").onclick = () => {
+document.getElementById("add-item-btn").onclick = () => resetForm();
+document.getElementById("fab-add").onclick = () => resetForm();
+
+function resetForm() {
   selectedItem = null;
 
   document.getElementById("item-name").value = "";
@@ -62,7 +65,7 @@ document.getElementById("add-item-btn").onclick = () => {
   const preview = document.getElementById("item-image-preview");
   preview.src = "";
   preview.style.display = "none";
-};
+}
 
 document.getElementById("item-image").onchange = e => {
   const file = e.target.files[0];

@@ -63,6 +63,8 @@ function renderOrder(order) {
     btn.onclick = () => updateStatus(order.id, btn.dataset.next);
   });
 
+  enableSwipe(div, order);
+
   return div;
 }
 
@@ -75,6 +77,34 @@ async function updateStatus(id, status) {
     },
     body: JSON.stringify({ status })
   });
+}
+
+function enableSwipe(card, order) {
+  let startX = 0;
+
+  card.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+  });
+
+  card.addEventListener("touchend", e => {
+    const endX = e.changedTouches[0].clientX;
+    const diff = endX - startX;
+
+    if (diff > 80) {
+      moveOrder(order, -1);
+    } else if (diff < -80) {
+      moveOrder(order, +1);
+    }
+  });
+}
+
+function moveOrder(order, direction) {
+  const stages = ["New", "Preparing", "Ready", "Completed"];
+  const idx = stages.indexOf(order.status);
+  const next = stages[idx + direction];
+  if (!next) return;
+
+  updateStatus(order.id, next);
 }
 
 socket.on("orders-updated", loadOrders);

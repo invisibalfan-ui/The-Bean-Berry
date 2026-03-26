@@ -5,6 +5,7 @@ document.getElementById("track-clear").onclick = () => {
   document.getElementById("track-id").value = "";
   document.getElementById("track-details").textContent = "Enter an order number to see details here.";
   document.getElementById("track-status-pill").style.display = "none";
+  document.getElementById("track-error").style.display = "none";
 };
 
 async function trackOrder() {
