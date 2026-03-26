@@ -1,4 +1,6 @@
 // items.js
+const token = localStorage.getItem("bean-token");
+if (!token) window.location.href = "login.html";
 const socketItems = io();
 const tableBody = document.querySelector("#items-table tbody");
 let selectedItem = null;
