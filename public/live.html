@@ -5,24 +5,29 @@
     <title>Snack Stall · Live Board</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <div class="background-orbit orbit-1"></div>
     <div class="background-orbit orbit-2"></div>
     <div class="background-orbit orbit-3"></div>
 
+    <!-- Desktop nav -->
+    <header class="top-nav">
+      <div class="nav-left">
+        <div class="logo-mark">SB</div>
+        <div class="nav-title">
+          <div class="nav-name">Live Board</div>
+          <div class="nav-subtitle">Now serving</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Orders</a>
+        <a href="bean.html">Kitchen</a>
+        <a href="items.html">Items</a>
+        <a href="track.html">Track</a>
+      </nav>
+    </header>
+
     <div class="page-shell">
       <main class="main-layout">
         <section class="card">
-          <div class="card-header">
-            <div class="card-title">Now serving</div>
-            <span class="badge">Auto-refreshing</span>
-          </div>
-          <div id="live-list"></div>
-        </section>
-      </main>
-
-      <script src="/socket.io/socket.io.js"></script>
-      <script src="live.js"></script>
-    </div>
-  </body>
-</html>

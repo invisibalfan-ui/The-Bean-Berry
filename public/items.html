@@ -2,38 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Snack Stall · Items</title>
+    <title>The Bean & Berry · Items</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <div class="background-orbit orbit-1"></div>
     <div class="background-orbit orbit-2"></div>
     <div class="background-orbit orbit-3"></div>
 
-    <aside class="sidebar">
-      <div class="sidebar-logo">SB</div>
-      <a href="index.html">Orders</a>
-      <a href="bean.html">Kitchen</a>
-      <a href="items.html">Items</a>
-      <a href="track.html">Track</a>
-    </aside>
+    <!-- Desktop nav -->
+    <header class="top-nav">
+      <div class="nav-left">
+        <div class="logo-mark">SB</div>
+        <div class="nav-title">
+          <div class="nav-name">Item Manager</div>
+          <div class="nav-subtitle">Menu, stock & visibility</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Orders</a>
+        <a href="bean.html">Kitchen</a>
+        <a href="items.html">Items</a>
+        <a href="track.html">Track</a>
+      </nav>
+    </header>
 
     <div class="page-shell">
-      <header class="top-nav">
-        <div class="nav-left">
-          <div class="logo-mark">SB</div>
-          <div class="nav-title">
-            <div class="nav-name">Item manager</div>
-            <div class="nav-subtitle">Menu, stock & visibility</div>
-          </div>
-        </div>
-        <nav class="nav-links">
-          <a href="index.html">Orders</a>
-          <a href="bean.html">Kitchen</a>
-          <a href="track.html">Track</a>
-        </nav>
-      </header>
-
       <main class="main-layout">
         <div class="page-header">
           <div class="page-title-block">
@@ -43,6 +38,7 @@
           <button id="add-item-btn" class="btn btn-primary">Add item</button>
         </div>
 
+        <!-- Items table -->
         <section class="card">
           <table class="table" id="items-table">
             <thead>
@@ -59,64 +55,61 @@
           </table>
         </section>
 
+        <!-- Editor -->
         <section class="card" style="margin-top:18px;">
           <div class="card-header">
             <div class="card-title">Edit item</div>
             <span class="badge">Select an item or add new</span>
           </div>
+
           <div class="form-grid">
             <div class="form-row">
-              <label class="label" for="item-name">Name</label>
+              <label class="label">Name</label>
               <input id="item-name" class="input" />
             </div>
+
             <div class="form-row">
-              <label class="label" for="item-category">Category</label>
+              <label class="label">Category</label>
               <input id="item-category" class="input" />
             </div>
+
             <div class="form-row">
-              <label class="label" for="item-price">Price</label>
-              <input id="item-price" class="input" type="number" step="0.01" />
+              <label class="label">Price</label>
+              <input id="item-price" type="number" step="0.01" class="input" />
             </div>
+
             <div class="form-row">
-              <label class="label" for="item-stock">Stock</label>
-              <input id="item-stock" class="input" type="number" />
+              <label class="label">Stock</label>
+              <input id="item-stock" type="number" class="input" />
             </div>
+
             <div class="form-row">
               <label class="label">Image</label>
-              <input type="file" id="item-image" class="input" accept="image/*" />
+              <input id="item-image" type="file" accept="image/*" class="input" />
               <img id="item-image-preview" class="item-image-preview" style="display:none;" />
             </div>
           </div>
+
           <div style="margin-top:14px;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;">
             <button id="delete-item" class="btn btn-ghost">Delete</button>
             <button id="save-item" class="btn btn-primary">Save changes</button>
           </div>
         </section>
       </main>
-
-      <button class="fab" id="fab-add">＋</button>
-
-      <nav class="mobile-nav">
-        <a href="index.html" class="mobile-nav-item">
-          <span class="icon">🏠</span>
-          <span class="label">Order</span>
-        </a>
-        <a href="bean.html" class="mobile-nav-item">
-          <span class="icon">🍳</span>
-          <span class="label">Kitchen</span>
-        </a>
-        <a href="items.html" class="mobile-nav-item">
-          <span class="icon">📦</span>
-          <span class="label">Items</span>
-        </a>
-        <a href="track.html" class="mobile-nav-item">
-          <span class="icon">📍</span>
-          <span class="label">Track</span>
-        </a>
-      </nav>
-
-      <script src="/socket.io/socket.io.js"></script>
-      <script src="items.js"></script>
     </div>
+
+    <!-- Floating Action Button -->
+    <button class="fab" id="fab-add">＋</button>
+
+    <!-- Mobile nav -->
+    <nav class="mobile-nav">
+      <a href="index.html" class="mobile-nav-item"><span class="icon">🏠</span><span class="label">Order</span></a>
+      <a href="bean.html" class="mobile-nav-item"><span class="icon">🍳</span><span class="label">Kitchen</span></a>
+      <a href="items.html" class="mobile-nav-item"><span class="icon">📦</span><span class="label">Items</span></a>
+      <a href="track.html" class="mobile-nav-item"><span class="icon">📍</span><span class="label">Track</span></a>
+    </nav>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="items.js"></script>
   </body>
 </html>

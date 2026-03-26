@@ -2,38 +2,34 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Snack Stall · Order</title>
+    <title>The Bean & Berry · Order</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
+    <!-- Background orbits -->
     <div class="background-orbit orbit-1"></div>
     <div class="background-orbit orbit-2"></div>
     <div class="background-orbit orbit-3"></div>
 
-    <aside class="sidebar">
-      <div class="sidebar-logo">SB</div>
-      <a href="index.html">Orders</a>
-      <a href="bean.html">Kitchen</a>
-      <a href="items.html">Items</a>
-      <a href="track.html">Track</a>
-    </aside>
+    <!-- Desktop top nav -->
+    <header class="top-nav">
+      <div class="nav-left">
+        <div class="logo-mark">SB</div>
+        <div class="nav-title">
+          <div class="nav-name">Snack Stall</div>
+          <div class="nav-subtitle">Powered by Beep.dev</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Orders</a>
+        <a href="bean.html">Kitchen</a>
+        <a href="items.html">Items</a>
+        <a href="track.html">Track</a>
+      </nav>
+    </header>
 
     <div class="page-shell">
-      <header class="top-nav">
-        <div class="nav-left">
-          <div class="logo-mark">SB</div>
-          <div class="nav-title">
-            <div class="nav-name">Snack Stall</div>
-            <div class="nav-subtitle">Powered by Beep.dev</div>
-          </div>
-        </div>
-        <nav class="nav-links">
-          <a href="bean.html">Kitchen</a>
-          <a href="items.html">Items</a>
-          <a href="track.html">Track</a>
-        </nav>
-      </header>
-
       <main class="main-layout">
         <div class="page-header">
           <div class="page-title-block">
@@ -47,6 +43,7 @@
         </div>
 
         <div class="grid-2">
+          <!-- Menu -->
           <section class="card">
             <div class="card-header">
               <div class="card-title">Menu</div>
@@ -55,6 +52,7 @@
             <div id="menu-list"></div>
           </section>
 
+          <!-- Order summary -->
           <section class="card">
             <div class="card-header">
               <div class="card-title">Your order</div>
@@ -76,6 +74,7 @@
                   <option value="Urgent">Urgent</option>
                 </select>
               </div>
+
               <div class="form-row">
                 <label class="label" for="notes">Notes</label>
                 <textarea id="notes" class="textarea" placeholder="Extra sauce, no ice, etc."></textarea>
@@ -98,28 +97,17 @@
           </section>
         </div>
       </main>
-
-      <nav class="mobile-nav">
-        <a href="index.html" class="mobile-nav-item">
-          <span class="icon">🏠</span>
-          <span class="label">Order</span>
-        </a>
-        <a href="bean.html" class="mobile-nav-item">
-          <span class="icon">🍳</span>
-          <span class="label">Kitchen</span>
-        </a>
-        <a href="items.html" class="mobile-nav-item">
-          <span class="icon">📦</span>
-          <span class="label">Items</span>
-        </a>
-        <a href="track.html" class="mobile-nav-item">
-          <span class="icon">📍</span>
-          <span class="label">Track</span>
-        </a>
-      </nav>
-
-      <script src="/socket.io/socket.io.js"></script>
-      <script src="script.js"></script>
     </div>
+
+    <!-- Mobile bottom nav -->
+    <nav class="mobile-nav">
+      <a href="index.html" class="mobile-nav-item"><span class="icon">🏠</span><span class="label">Order</span></a>
+      <a href="bean.html" class="mobile-nav-item"><span class="icon">🍳</span><span class="label">Kitchen</span></a>
+      <a href="items.html" class="mobile-nav-item"><span class="icon">📦</span><span class="label">Items</span></a>
+      <a href="track.html" class="mobile-nav-item"><span class="icon">📍</span><span class="label">Track</span></a>
+    </nav>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
