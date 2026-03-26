@@ -1,5 +1,5 @@
-const socket = io();
-
+// track.js
+const socketTrack = io();
 document.getElementById("track-btn").onclick = trackOrder;
 document.getElementById("track-clear").onclick = () => {
   document.getElementById("track-id").value = "";
@@ -9,22 +9,19 @@ document.getElementById("track-clear").onclick = () => {
 };
 
 async function trackOrder() {
-  const id = Number(document.getElementById("track-id").value);
+  const id = document.getElementById("track-id").value.trim();
   if (!id) return;
-
-  const res = await fetch(`/track/${id}`);
-  const order = await res.json();
-
-  if (order.error) {
-    document.getElementById("track-error").style.display = "block";
-    return;
-  }
-
-  document.getElementById("track-error").style.display = "none";
-
-  render(order);
-
-  socket.emit("track-order", id);
+  try {
+    const res = await fetch(`/track/${encodeURIComponent(id)}`);
+    const order = await res.json();
+    if (order.error) {
+      document.getElementById("track-error").style.display = "block";
+      return;
+    }
+    document.getElementById("track-error").style.display = "none";
+    render(order);
+    socketTrack.emit("track-order", id);
+  } catch (e) { console.error(e); document.getElementById("track-error").style.display = "block"; }
 }
 
 function render(order) {
@@ -32,26 +29,13 @@ function render(order) {
   pill.textContent = order.status;
   pill.className = `status-pill ${order.status.toLowerCase()}`;
   pill.style.display = "inline-block";
-
   document.getElementById("track-details").innerHTML = `
     <div>Order #${order.id}</div>
     <div style="margin-top:6px;">
-      ${order.items
-        .map(
-          i => `
-        <div style="display:flex;align-items:center;gap:6px;">
-          ${i.image ? `<img src="${i.image}" class="item-thumb">` : ""}
-          ${i.qty}× ${i.name}
-        </div>
-      `
-        )
-        .join("")}
+      ${order.items.map(i => `<div style="display:flex;align-items:center;gap:6px;">${i.image?`<img src="${i.image}" class="item-thumb">`:""}${i.qty}× ${i.name}</div>`).join("")}
     </div>
-    <div style="margin-top:10px;color:var(--text-soft);font-size:12px;">
-      Priority: ${order.priority}<br>
-      Notes: ${order.notes || "None"}
-    </div>
+    <div style="margin-top:10px;color:var(--muted);font-size:12px;">Priority: ${order.priority}<br>Notes: ${order.notes||"None"}</div>
   `;
 }
 
-socket.on("order-updated", render);
+socketTrack.on("order-updated", render);

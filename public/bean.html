@@ -1,17 +1,17 @@
+<!-- bean.html -->
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>The Bean & Berry · Kitchen</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" />
+    <title>Snack Stall · Kitchen</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-
   <body>
     <div class="background-orbit orbit-1"></div>
     <div class="background-orbit orbit-2"></div>
     <div class="background-orbit orbit-3"></div>
 
-    <!-- Desktop nav -->
     <header class="top-nav">
       <div class="nav-left">
         <div class="logo-mark">SB</div>
@@ -35,10 +35,7 @@
             <h1>Live order board</h1>
             <p>Tap or swipe to move orders through stages.</p>
           </div>
-          <div class="pill">
-            <span class="dot" style="width:8px;height:8px;border-radius:999px;background:var(--accent-strong);box-shadow:0 0 10px rgba(59,130,246,0.8);"></span>
-            Real-time via WebSocket
-          </div>
+          <div class="pill">Real-time via WebSocket</div>
         </div>
 
         <section class="card">
@@ -47,7 +44,6 @@
       </main>
     </div>
 
-    <!-- Mobile nav -->
     <nav class="mobile-nav">
       <a href="index.html" class="mobile-nav-item"><span class="icon">🏠</span><span class="label">Order</span></a>
       <a href="bean.html" class="mobile-nav-item"><span class="icon">🍳</span><span class="label">Kitchen</span></a>
@@ -57,5 +53,6 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="bean.js"></script>
+    <script src="mobile.js"></script>
   </body>
 </html>

@@ -1,17 +1,17 @@
+<!-- track.html -->
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>The Bean & Berry · Track Order</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" />
+    <title>Snack Stall · Track Order</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-
   <body>
     <div class="background-orbit orbit-1"></div>
     <div class="background-orbit orbit-2"></div>
     <div class="background-orbit orbit-3"></div>
 
-    <!-- Desktop nav -->
     <header class="top-nav">
       <div class="nav-left">
         <div class="logo-mark">SB</div>
@@ -38,45 +38,26 @@
         </div>
 
         <div class="grid-2">
-          <!-- Search -->
           <section class="card">
-            <div class="card-header">
-              <div class="card-title">Find your order</div>
-            </div>
-
+            <div class="card-header"><div class="card-title">Find your order</div></div>
             <div class="form-grid">
-              <div class="form-row">
-                <label class="label">Order number</label>
-                <input id="track-id" class="input" placeholder="e.g. 42" />
-              </div>
+              <div class="form-row"><label class="label">Order number</label><input id="track-id" class="input" inputmode="numeric" pattern="[0-9]*" placeholder="e.g. 42" /></div>
             </div>
-
             <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;">
               <button id="track-btn" class="btn btn-primary">Track order</button>
               <button id="track-clear" class="btn btn-ghost">Clear</button>
             </div>
-
-            <p id="track-error" style="margin-top:10px;font-size:12px;color:var(--danger);display:none;">
-              Order not found. Check the number and try again.
-            </p>
+            <p id="track-error" style="margin-top:10px;font-size:12px;color:#ef4444;display:none;">Order not found. Check the number and try again.</p>
           </section>
 
-          <!-- Status -->
           <section class="card">
-            <div class="card-header">
-              <div class="card-title">Status</div>
-              <span id="track-status-pill" class="status-pill new" style="display:none;"></span>
-            </div>
-
-            <div id="track-details" style="font-size:13px;color:var(--text-muted);">
-              Enter an order number to see details here.
-            </div>
+            <div class="card-header"><div class="card-title">Status</div><span id="track-status-pill" class="status-pill new" style="display:none;"></span></div>
+            <div id="track-details" style="font-size:13px;color:var(--muted);">Enter an order number to see details here.</div>
           </section>
         </div>
       </main>
     </div>
 
-    <!-- Mobile nav -->
     <nav class="mobile-nav">
       <a href="index.html" class="mobile-nav-item"><span class="icon">🏠</span><span class="label">Order</span></a>
       <a href="bean.html" class="mobile-nav-item"><span class="icon">🍳</span><span class="label">Kitchen</span></a>
@@ -86,5 +67,6 @@
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="track.js"></script>
+    <script src="mobile.js"></script>
   </body>
 </html>
