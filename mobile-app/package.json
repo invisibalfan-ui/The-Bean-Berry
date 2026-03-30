@@ -1,0 +1,13 @@
+{
+  "name": "mobile",
+  "main": "App.js",
+  "dependencies": {
+    "expo": "^50.0.0",
+    "react": "18",
+    "react-native": "0.73.0",
+    "axios": "^1.6.0",
+    "expo-notifications": "~0.27.6",
+    "expo-device": "~5.9.4",
+    "@react-native-async-storage/async-storage": "^1.19.0"
+  }
+}
