@@ -2,8 +2,8 @@ import React,{ useEffect,useState } from 'react'
 import axios from 'axios'
 import { io } from 'socket.io-client'
 
-const API = "http://localhost:5000/api"
-const socket = io('http://localhost:5000')
+const API = process.env.REACT_APP_API_URL
+const socket = io(process.env.REACT_APP_API_URL)
 
 export default function Orders() {
   const [orders,setOrders] = useState([])
