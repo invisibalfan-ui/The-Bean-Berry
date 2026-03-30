@@ -10,12 +10,12 @@ app.use(cors())
 app.use(express.json())
 
 // --- MONGODB CONNECTION ---
-if (!process.env.MONGO_URI) {
+if (!process.env.MONGO_URL) {
   console.error("Error: MONGO_URI not defined in Railway variables")
   process.exit(1) // crash early if env is missing
 }
 
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
