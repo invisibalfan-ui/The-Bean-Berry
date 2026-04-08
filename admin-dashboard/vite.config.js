@@ -8,5 +8,19 @@ export default defineConfig({
   },
   define: {
     'process.env': process.env
-  }
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      // Allows JSX in .js files during development
+      loader: {
+        '.js': 'jsx',
+      },
+    },
+  },
+  esbuild: {
+    // Allows JSX in .js files during the build process
+    loader: 'jsx',
+    include: /src\/.*\.js$/, // Target only your source files
+    exclude: [],
+  },
 })
