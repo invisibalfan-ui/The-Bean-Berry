@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { API } from "./api"
-import { socket } from "./socket"
-import Card from "./Card"
+import { API } from "../api"
+import { socket } from "../socket"
+import Card from "../components/Card"
 
 export default function Orders() {
   const [orders, setOrders] = useState([])

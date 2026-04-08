@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { API } from "./api"
-import Card from "./Card"
+import { API } from "../api"
+import Card from '../components/Card'
 
 export default function Menu() {
   const [items, setItems] = useState([])
