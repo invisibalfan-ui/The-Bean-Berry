@@ -37,6 +37,8 @@ io.on('connection', socket => {
 app.use('/api/auth', require('./routes/auth')); // public login
 app.use('/api/menu', auth, require('./routes/menu')); // protected
 app.use('/api/orders', auth, require('./routes/orders')); // protected
+app.use('/api/register', require('./routes/register')); // new register route
+
 
 // --- START SERVER ---
 const PORT = process.env.PORT || 5000;

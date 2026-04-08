@@ -1,0 +1,14 @@
+$kind: http-request
+name: login
+url: https://the-bean-berry-production.up.railway.app/api/auth/login
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "username": "admin",
+      "password": "$2b$10$KIXQ3/ExVZ2t58y3iH6qee2tWJ2QWZf2Wgy9cbV/nf8a9f7kkuG6a"
+    }
+order: 1775661909383
