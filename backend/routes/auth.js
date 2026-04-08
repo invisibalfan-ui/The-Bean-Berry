@@ -1,22 +1,38 @@
-const router = require('express').Router()
-const jwt = require('jsonwebtoken')
+// routes/auth.js
+const router = require('express').Router();
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+const User = require('../models/User'); // your User model
 
-const ADMIN_USER = "admin"
-const ADMIN_PASS = "admin123"
+const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret';
 
-router.post('/login', (req, res) => {
-  const { username, password } = req.body
+// POST /api/auth/login
+router.post('/login', async (req, res) => {
+  const { username, password } = req.body;
 
-  if (username !== ADMIN_USER || password !== ADMIN_PASS)
-    return res.status(401).json({ error: "Invalid credentials" })
+  if (!username || !password)
+    return res.status(400).json({ error: 'Username and password required' });
 
-  const token = jwt.sign(
-    { username },
-    process.env.JWT_SECRET,
-    { expiresIn: "7d" }
-  )
+  try {
+    const user = await User.findOne({ username });
+    if (!user) return res.status(401).json({ error: 'Invalid credentials' });
 
-  res.json({ token })
-})
+    // Compare password with hashed password in DB
+    const validPassword = await bcrypt.compare(password, user.password);
+    if (!validPassword) return res.status(401).json({ error: 'Invalid credentials' });
 
-module.exports = router
+    // Create JWT token
+    const token = jwt.sign(
+      { id: user._id, username: user.username, role: user.role },
+      JWT_SECRET,
+      { expiresIn: '7d' }
+    );
+
+    res.json({ token, user: { id: user._id, username: user.username, role: user.role } });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+module.exports = router;

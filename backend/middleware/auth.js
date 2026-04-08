@@ -1,15 +1,20 @@
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
-  const token = req.headers.authorization
+  const authHeader = req.headers.authorization;
 
-  if (!token) return res.sendStatus(401)
+  if (!authHeader) return res.sendStatus(401);
+
+  // Support "Bearer <token>" format
+  const token = authHeader.startsWith('Bearer ')
+    ? authHeader.split(' ')[1]
+    : authHeader;
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET)
-    req.user = decoded
-    next()
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
   } catch {
-    res.sendStatus(403)
+    res.sendStatus(403); // invalid token
   }
-}
+};
