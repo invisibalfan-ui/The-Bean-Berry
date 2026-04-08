@@ -6,6 +6,8 @@ import Menu from "./pages/Menu"
 import Login from "./pages/Login"
 import Customer from "./pages/Customer"
 import { motion } from "framer-motion"
+import Register from "./pages/Register";
+
 
 export default function App() {
   const [page, setPage] = useState("Dashboard")
@@ -19,6 +21,7 @@ export default function App() {
       case "Orders": return <Orders />
       case "Menu": return <Menu />
       case "Customer": return <Customer />
+      case "Register": return <Register />
     }
   }
 
