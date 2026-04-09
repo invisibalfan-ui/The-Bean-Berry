@@ -8,7 +8,8 @@ body:
   type: json
   content: |-
     {
-      "username": "admin",
-      "password": "$2b$10$KIXQ3/ExVZ2t58y3iH6qee2tWJ2QWZf2Wgy9cbV/nf8a9f7kkuG6a"
+      "username": "newuser",
+      "password": "mypassword",
+      "role": "staff"
     }
 order: 1775661909383
